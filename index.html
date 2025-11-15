@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic & Research Market Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        .chart-container-large {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+            .chart-container-large {
+                height: 400px;
+                max-height: 450px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-[#00489C] text-white p-8 text-center rounded-b-lg shadow-lg mb-8">
+        <h1 class="text-4xl font-bold mb-2">The Academic Research Landscape</h1>
+        <p class="text-xl text-indigo-100">A Global & U.S. Market Assessment</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-2xl font-bold text-[#00489C] mb-4 text-center">Executive Summary: Key Figures</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <span class="text-5xl font-extrabold text-[#005BBE]">8.8M</span>
+                    <p class="text-lg text-gray-700 mt-2">Total Researchers Worldwide</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <span class="text-5xl font-extrabold text-[#005BBE]">577K</span>
+                    <p class="text-lg text-gray-700 mt-2">PhD Students Enrolled in the U.S.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <span class="text-5xl font-extrabold text-[#005BBE]">1.85M</span>
+                    <p class="text-lg text-gray-700 mt-2">Master's Students Enrolled in the U.S.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">Global Researcher Distribution</h3>
+                <p class="text-gray-600 mb-4">The global research community is concentrated in key regions, with Asia leading in sheer volume of researchers. This highlights the region's significant investment in R&D and higher education.</p>
+                <div class="chart-container">
+                    <canvas id="globalResearchersChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">U.S. Faculty by Rank</h3>
+                <p class="text-gray-600 mb-4">The U.S. full-time faculty is distributed across various ranks. Full Professors make up the largest single group, followed by Assistant and Associate Professors, indicating a mature academic workforce.</p>
+                <div class="chart-container">
+                    <canvas id="facultyRankChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">U.S. Postgraduate Enrollment Trends</h3>
+                <p class="text-gray-600 mb-4">Enrollment in U.S. postgraduate programs has shown steady growth. While Master's programs enroll a significantly larger number of students, both Master's and PhD tracks have expanded over the last decade.</p>
+                <div class="chart-container-large">
+                    <canvas id="postgradTrendChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3 text-center">Profile of U.S. PhD Students</h3>
+                <p class="text-gray-600 mb-4 text-center">The U.S. PhD student body is diverse. A significant portion of students are international, highlighting the global appeal of U.S. research institutions. The gender balance is nearly even, though this varies by field.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-700 text-center mb-2">Residency Status</h4>
+                        <div class="chart-container">
+                            <canvas id="residencyChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-700 text-center mb-2">Gender Demographics</h4>
+                        <div class="chart-container">
+                            <canvas id="genderChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">Faculty Gender by Rank</h3>
+                <p class="text-gray-600 mb-4">A closer look at faculty demographics reveals a gap in gender representation at senior levels. While parity is approached at the Assistant Professor level, the proportion of women decreases at higher ranks.</p>
+                <div class="chart-container">
+                    <canvas id="facultyGenderChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">Future Outlook: PhD Enrollment</h3>
+                <p class="text-gray-600 mb-4">Projections indicate a continued, moderate growth in PhD enrollment. This trend is driven by increasing demand for high-level expertise in technology, health, and data-driven fields.</p>
+                <div class="chart-container">
+                    <canvas id="outlookChart"></canvas>
+                </div>
+            </section>
+
+            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                <h3 class="text-xl font-bold text-[#00489C] mb-3">Postgraduate Enrollment by Field</h3>
+                <p class="text-gray-600 mb-4">STEM fields dominate postgraduate enrollment, reflecting strong demand and funding. Business and Health Sciences also represent major segments, followed by a combined group for social sciences and humanities.</p>
+                <div class="chart-container-large">
+                    <canvas id="fieldChart"></canvas>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="text-center p-6 mt-8 text-gray-500 text-sm">
+        <p>&copy; 2025 Academic Market Assessment. All data is representative for illustrative purposes.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colors = {
+                primaryDark: '#00489C',
+                primary: '#005BBE',
+                primaryLight: '#0073E5',
+                accent: '#4DA1FF',
+                accentLight: '#99C7FF'
+            };
+
+            const chartColors = [colors.primary, colors.primaryLight, colors.accent, colors.accentLight, colors.primaryDark];
+            
+            const requiredTooltipConfig = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                if (!item || !item.chart.data.labels[item.dataIndex]) {
+                                    return '';
+                                }
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const globalResearchersCtx = document.getElementById('globalResearchersChart')?.getContext('2d');
+            if (globalResearchersCtx) {
+                new Chart(globalResearchersCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Asia', 'Europe', 'North America', ['Rest of', 'World']],
+                        datasets: [{
+                            label: 'Researchers',
+                            data: [43, 25, 22, 10],
+                            backgroundColor: chartColors,
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+
+            const postgradTrendCtx = document.getElementById('postgradTrendChart')?.getContext('2d');
+            if (postgradTrendCtx) {
+                new Chart(postgradTrendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2015', '2017', '2019', '2021', '2023'],
+                        datasets: [
+                            {
+                                label: 'Master\'s Students (Millions)',
+                                data: [1.7, 1.75, 1.8, 1.82, 1.85],
+                                borderColor: colors.primary,
+                                backgroundColor: 'rgba(0, 91, 190, 0.1)',
+                                fill: true,
+                                tension: 0.3
+                            },
+                            {
+                                label: 'PhD Students (Thousands)',
+                                data: [520, 535, 550, 565, 577],
+                                borderColor: colors.accent,
+                                backgroundColor: 'rgba(77, 161, 255, 0.1)',
+                                fill: true,
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: 'Master\'s (Millions)'
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: 'PhD (Thousands)'
+                                },
+                                grid: {
+                                    drawOnChartArea: false,
+                                },
+                            },
+                        },
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+            
+            const residencyCtx = document.getElementById('residencyChart')?.getContext('2d');
+            if (residencyCtx) {
+                new Chart(residencyCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Domestic', 'International'],
+                        datasets: [{
+                            data: [65, 35],
+                            backgroundColor: [colors.primaryLight, colors.accent],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+
+            const genderCtx = document.getElementById('genderChart')?.getContext('2d');
+            if (genderCtx) {
+                new Chart(genderCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Male', 'Female', ['Non-binary /', 'Other']],
+                        datasets: [{
+                            data: [52, 47, 1],
+                            backgroundColor: [colors.primary, colors.accent, colors.accentLight],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+
+            const facultyRankCtx = document.getElementById('facultyRankChart')?.getContext('2d');
+            if (facultyRankCtx) {
+                new Chart(facultyRankCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Full Professor', 'Associate Professor', 'Assistant Professor', ['Instructor /', 'Lecturer']],
+                        datasets: [{
+                            label: 'Number (Thousands)',
+                            data: [150, 125, 135, 120],
+                            backgroundColor: [colors.primaryDark, colors.primary, colors.primaryLight, colors.accent],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                display: false,
+                            },
+                        }
+                    }
+                });
+            }
+
+            const facultyGenderCtx = document.getElementById('facultyGenderChart')?.getContext('2d');
+            if (facultyGenderCtx) {
+                new Chart(facultyGenderCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Full Professor', 'Associate Professor', 'Assistant Professor'],
+                        datasets: [
+                            {
+                                label: 'Male (Thousands)',
+                                data: [105, 75, 67.5],
+                                backgroundColor: colors.primary,
+                            },
+                            {
+                                label: 'Female (Thousands)',
+                                data: [45, 50, 67.5],
+                                backgroundColor: colors.accent,
+                            }
+                        ]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                stacked: false,
+                            },
+                            y: {
+                                stacked: false,
+                            }
+                        },
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+
+            const fieldCtx = document.getElementById('fieldChart')?.getContext('2d');
+            if (fieldCtx) {
+                new Chart(fieldCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['STEM', 'Business', 'Health Sciences', ['Social Sciences &', 'Humanities'], 'Education'],
+                        datasets: [{
+                            label: 'Enrollment %',
+                            data: [35, 20, 18, 17, 10],
+                            backgroundColor: chartColors,
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+
+            const outlookCtx = document.getElementById('outlookChart')?.getContext('2d');
+            if (outlookCtx) {
+                new Chart(outlookCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2024', '2026', '2028', '2030'],
+                        datasets: [{
+                            label: 'Projected PhD Enrollment (Thousands)',
+                            data: [580, 595, 610, 625],
+                            borderColor: colors.primary,
+                            backgroundColor: 'rgba(0, 91, 190, 0.2)',
+                            fill: true,
+                            tension: 0.3
+                        }]
+                    },
+                    options: {
+                        ...requiredTooltipConfig,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipConfig.plugins,
+                            legend: {
+                                position: 'bottom',
+                            },
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
