@@ -3,453 +3,685 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic & Research Market Assessment</title>
+    <title>Data Lab Academy</title>
+    
+    <!-- Custom Favicon based on instructions -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23007FFF'/%3E%3Crect x='12' y='32' width='8' height='20' rx='4' fill='%23FFFFFF'/%3E%3Crect x='28' y='16' width='8' height='36' rx='4' fill='%23FFFFFF'/%3E%3Crect x='44' y='40' width='8' height='12' rx='4' fill='%23FFFFFF'/%3E%3C/svg%3E" type="image/svg+xml">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 350px;
-        }
-        .chart-container-large {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-                max-height: 400px;
-            }
-            .chart-container-large {
-                height: 400px;
-                max-height: 450px;
-            }
-        }
-    </style>
-</head>
-<body class="bg-gray-100 text-gray-800">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <header class="bg-[#00489C] text-white p-8 text-center rounded-b-lg shadow-lg mb-8">
-        <h1 class="text-4xl font-bold mb-2">The Academic Research Landscape</h1>
-        <p class="text-xl text-indigo-100">A Global & U.S. Market Assessment</p>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8">
-
-        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
-            <h2 class="text-2xl font-bold text-[#00489C] mb-4 text-center">Executive Summary: Key Figures</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <span class="text-5xl font-extrabold text-[#005BBE]">8.8M</span>
-                    <p class="text-lg text-gray-700 mt-2">Total Researchers Worldwide</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <span class="text-5xl font-extrabold text-[#005BBE]">577K</span>
-                    <p class="text-lg text-gray-700 mt-2">PhD Students Enrolled in the U.S.</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <span class="text-5xl font-extrabold text-[#005BBE]">1.85M</span>
-                    <p class="text-lg text-gray-700 mt-2">Master's Students Enrolled in the U.S.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <section class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">Global Researcher Distribution</h3>
-                <p class="text-gray-600 mb-4">The global research community is concentrated in key regions, with Asia leading in sheer volume of researchers. This highlights the region's significant investment in R&D and higher education.</p>
-                <div class="chart-container">
-                    <canvas id="globalResearchersChart"></canvas>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">U.S. Faculty by Rank</h3>
-                <p class="text-gray-600 mb-4">The U.S. full-time faculty is distributed across various ranks. Full Professors make up the largest single group, followed by Assistant and Associate Professors, indicating a mature academic workforce.</p>
-                <div class="chart-container">
-                    <canvas id="facultyRankChart"></canvas>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">U.S. Postgraduate Enrollment Trends</h3>
-                <p class="text-gray-600 mb-4">Enrollment in U.S. postgraduate programs has shown steady growth. While Master's programs enroll a significantly larger number of students, both Master's and PhD tracks have expanded over the last decade.</p>
-                <div class="chart-container-large">
-                    <canvas id="postgradTrendChart"></canvas>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3 text-center">Profile of U.S. PhD Students</h3>
-                <p class="text-gray-600 mb-4 text-center">The U.S. PhD student body is diverse. A significant portion of students are international, highlighting the global appeal of U.S. research institutions. The gender balance is nearly even, though this varies by field.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-lg font-semibold text-gray-700 text-center mb-2">Residency Status</h4>
-                        <div class="chart-container">
-                            <canvas id="residencyChart"></canvas>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="text-lg font-semibold text-gray-700 text-center mb-2">Gender Demographics</h4>
-                        <div class="chart-container">
-                            <canvas id="genderChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">Faculty Gender by Rank</h3>
-                <p class="text-gray-600 mb-4">A closer look at faculty demographics reveals a gap in gender representation at senior levels. While parity is approached at the Assistant Professor level, the proportion of women decreases at higher ranks.</p>
-                <div class="chart-container">
-                    <canvas id="facultyGenderChart"></canvas>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">Future Outlook: PhD Enrollment</h3>
-                <p class="text-gray-600 mb-4">Projections indicate a continued, moderate growth in PhD enrollment. This trend is driven by increasing demand for high-level expertise in technology, health, and data-driven fields.</p>
-                <div class="chart-container">
-                    <canvas id="outlookChart"></canvas>
-                </div>
-            </section>
-
-            <section class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
-                <h3 class="text-xl font-bold text-[#00489C] mb-3">Postgraduate Enrollment by Field</h3>
-                <p class="text-gray-600 mb-4">STEM fields dominate postgraduate enrollment, reflecting strong demand and funding. Business and Health Sciences also represent major segments, followed by a combined group for social sciences and humanities.</p>
-                <div class="chart-container-large">
-                    <canvas id="fieldChart"></canvas>
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    <footer class="text-center p-6 mt-8 text-gray-500 text-sm">
-        <p>&copy; 2025 Academic Market Assessment. All data is representative for illustrative purposes.</p>
-    </footer>
-
+    <!-- Tailwind Configuration for Yellow/Amber Theme -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const colors = {
-                primaryDark: '#00489C',
-                primary: '#005BBE',
-                primaryLight: '#0073E5',
-                accent: '#4DA1FF',
-                accentLight: '#99C7FF'
-            };
-
-            const chartColors = [colors.primary, colors.primaryLight, colors.accent, colors.accentLight, colors.primaryDark];
-            
-            const requiredTooltipConfig = {
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                const item = tooltipItems[0];
-                                if (!item || !item.chart.data.labels[item.dataIndex]) {
-                                    return '';
-                                }
-                                let label = item.chart.data.labels[item.dataIndex];
-                                if (Array.isArray(label)) {
-                                  return label.join(' ');
-                                } else {
-                                  return label;
-                                }
-                            }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
                     }
                 }
-            };
+            }
+        }
+    </script>
 
-            const globalResearchersCtx = document.getElementById('globalResearchersChart')?.getContext('2d');
-            if (globalResearchersCtx) {
-                new Chart(globalResearchersCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Asia', 'Europe', 'North America', ['Rest of', 'World']],
-                        datasets: [{
-                            label: 'Researchers',
-                            data: [43, 25, 22, 10],
-                            backgroundColor: chartColors,
-                            borderColor: '#ffffff',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            background-color: #09090b;
+            color: #cbd5e1;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent body scroll, manage within containers */
+        }
+
+        /* Custom Scrollbar matching dark/amber theme */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; border: 2px solid #09090b; }
+        ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .pulse-border {
+            animation: pulseBorder 2s infinite;
+        }
+        @keyframes pulseBorder {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+        }
+
+        /* Textarea reset for code blocks */
+        textarea:focus { outline: none; }
+    </style>
+</head>
+<body class="flex h-screen w-full selection:bg-theme-500/30">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="w-80 bg-[#0c0c0e] border-r border-slate-800/50 h-full flex-shrink-0 z-10 hidden md:flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.2)]">
+        <!-- Profile Section -->
+        <div class="p-8 border-b border-slate-800/50 bg-gradient-to-b from-[#111115] to-[#0c0c0e]">
+            <div class="flex items-center gap-5 mb-6">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-theme-500 to-theme-300 flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.25)] border border-theme-400/20">
+                    <i data-lucide="gamepad-2" class="text-theme-950 w-7 h-7" stroke-width="2.5"></i>
+                </div>
+                <div>
+                    <h2 class="font-bold text-slate-100 text-lg tracking-tight">Researcher</h2>
+                    <div id="sidebar-level" class="text-xs text-theme-400 font-semibold tracking-wider uppercase mt-0.5">Level 1</div>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-400 font-medium tracking-wide">Course Progress</span>
+                    <span id="progress-text" class="text-theme-400 font-mono font-bold">0%</span>
+                </div>
+                <div class="w-full bg-slate-800/60 rounded-full h-2 overflow-hidden shadow-inner">
+                    <div id="progress-bar" class="bg-gradient-to-r from-theme-500 to-theme-300 h-full transition-all duration-1000 ease-out relative w-0">
+                        <div class="absolute top-0 right-0 bottom-0 w-4 bg-white/30 blur-[2px] rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curriculum List -->
+        <div class="p-6 flex-1 overflow-y-auto">
+            <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-5 flex items-center gap-2">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Training Modules
+            </h3>
+            <div class="space-y-2.5" id="module-list-container">
+                <!-- Modules injected here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1 flex flex-col h-full relative bg-[#09090b]">
+        
+        <!-- Top Navigation -->
+        <div class="h-16 border-b border-slate-800/60 bg-[#0c0c0e]/80 backdrop-blur-xl flex items-center justify-between px-6 shrink-0 z-20 sticky top-0">
+            <!-- Left side branding -->
+            <div class="flex items-center gap-3">
+                <i data-lucide="gamepad-2" class="text-slate-400 w-5 h-5 cursor-pointer hover:text-white transition-colors" onclick="goToHome()"></i>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold text-sm tracking-tight leading-tight">Data Lab Academy</span>
+                    <span class="text-theme-500 font-medium text-xs leading-tight">Data Preparation & Assumption Checks</span>
+                </div>
+            </div>
+            
+            <!-- Right side tabs (Only Home as per instructions) -->
+            <div class="flex h-full gap-4">
+                <button onclick="goToHome()" id="nav-btn-home" class="h-full flex items-center gap-2.5 border-b-2 border-theme-500 text-theme-400 px-2 transition-all duration-300">
+                    <i data-lucide="home" class="w-4 h-4"></i> <span class="hidden sm:inline font-semibold tracking-wide text-sm">Home</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scrollable Content Container -->
+        <div class="flex-1 overflow-y-auto relative scroll-smooth p-4 md:p-8" id="main-scroll-area">
+            
+            <!-- HOME VIEW -->
+            <div id="view-home" class="max-w-4xl mx-auto py-8 fade-in">
+                <div class="bg-[#0f1115] border border-slate-800/60 rounded-[2rem] p-8 md:p-14 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-theme-500/10 rounded-full blur-[100px] -mr-48 -mt-48 pointer-events-none transition-all duration-1000"></div>
+                    
+                    <div class="flex flex-col items-center text-center relative z-10">
+                        <div class="p-4 bg-theme-500/10 rounded-2xl mb-6 shadow-inner border border-theme-500/20">
+                            <i data-lucide="graduation-cap" class="text-theme-400 w-10 h-10"></i>
+                        </div>
+                        <h2 class="text-sm font-bold tracking-widest uppercase text-theme-400 mb-4">Data Preparation & Assumption Checks</h2>
+                        
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-100 mb-6 leading-tight tracking-tight">
+                            Welcome to <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-theme-400 to-theme-200">Data Lab Academy</span>
+                        </h1>
+                        
+                        <p class="text-slate-400 text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
+                            In this module, you will master the foundational steps of data analysis using Python. You will learn how to load datasets, handle missing values, and run critical assumption checks including the Shapiro-Wilk test for normality and Levene's test for homogeneity of variance.
+                        </p>
+                        
+                        <button onclick="launchGame()" class="bg-theme-500 hover:bg-theme-400 text-theme-950 font-bold py-4 px-10 rounded-2xl transition-all duration-300 flex items-center gap-3 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:-translate-y-1 text-lg">
+                            <i data-lucide="rocket" class="w-5 h-5"></i> Launch Module
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODELAB VIEW (Notebook) -->
+            <div id="view-codelab" class="max-w-4xl mx-auto pb-40 hidden">
+                <div class="mb-10 flex items-center justify-between bg-theme-500/5 border border-theme-500/10 p-5 rounded-3xl">
+                    <h2 class="text-xl font-bold text-slate-100 flex items-center gap-3">
+                        <i data-lucide="terminal" class="text-theme-400 w-6 h-6"></i> Interactive IDE
+                    </h2>
+                    <span class="text-xs text-slate-400 font-mono bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">Kernel: Python 3.10</span>
+                </div>
+                
+                <!-- Steps will be injected here by JavaScript -->
+                <div id="notebook-container"></div>
+                
+                <!-- Bottom anchor for auto-scrolling -->
+                <div id="scroll-anchor" class="h-10"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- DATA DEFINITION ---
+        const moduleData = {
+            id: 1,
+            title: "Module 2: Data Preparation & Assumption Checks",
+            topic: "Data Loading, Cleaning, and Statistical Assumptions",
+            steps: [
+                {
+                    id: "step-1",
+                    instruction: "**Step 1: Data Loading & Cleaning**\nBefore running any analysis, we must load our data and ensure it's clean. Import `pandas`, load the dataset, and drop any missing rows.",
+                    initialCode: "import ____ as pd\n\n# Load clinical trial data\ndf = pd.____('clinical_data.csv')\n\n# Clean data by dropping rows with missing values (NaN)\nclean_df = df.____()\n\nprint(clean_df.head())",
+                    expected: ["pandas", "read_csv", "dropna"],
+                    solution: "import pandas as pd\n\n# Load clinical trial data\ndf = pd.read_csv('clinical_data.csv')\n\n# Clean data by dropping rows with missing values (NaN)\nclean_df = df.dropna()\n\nprint(clean_df.head())",
+                    hints: [
+                        "The standard alias for pandas is 'pd', so import 'pandas'.",
+                        "Use 'read_csv' to load a CSV file, and 'dropna()' to remove missing values."
+                    ],
+                    successMsg: "Data loaded and cleaned successfully! Clean data is the foundation of reliable analysis.",
+                    output: "   PatientID Group  BloodPressure  Score\n0        101     A          120.5   45.2\n1        102     B          118.0   42.1\n2        103     A          125.1   50.0\n4        105     B          119.5   44.3\n5        106     A          121.0   46.8"
+                },
+                {
+                    id: "step-2",
+                    instruction: "**Step 2: Testing for Normality (Shapiro-Wilk)**\nMany statistical tests require data to be normally distributed. Use `scipy.stats` to perform a Shapiro-Wilk test on the 'BloodPressure' column.",
+                    initialCode: "import scipy.stats as ____\n\n# Extract BloodPressure data\nbp_data = clean_df['BloodPressure']\n\n# Perform Shapiro-Wilk test for normality\nstat, p_value = stats.____(bp_data)\n\nprint(f\"Shapiro-Wilk Statistic: {stat:.3f}, P-value: {p_value:.4f}\")",
+                    expected: ["stats", "shapiro"],
+                    solution: "import scipy.stats as stats\n\n# Extract BloodPressure data\nbp_data = clean_df['BloodPressure']\n\n# Perform Shapiro-Wilk test for normality\nstat, p_value = stats.shapiro(bp_data)\n\nprint(f\"Shapiro-Wilk Statistic: {stat:.3f}, P-value: {p_value:.4f}\")",
+                    hints: [
+                        "Import scipy.stats as 'stats'.",
+                        "The function for the Shapiro-Wilk test is simply 'shapiro'."
+                    ],
+                    successMsg: "Normality test complete. Since the p-value is > 0.05, we fail to reject the null hypothesis; the data appears normally distributed.",
+                    output: "Shapiro-Wilk Statistic: 0.985, P-value: 0.1420"
+                },
+                {
+                    id: "step-3",
+                    instruction: "**Step 3: Homogeneity of Variance (Levene's Test)**\nWhen comparing groups, we must check if their variances are equal. Perform Levene's test to compare the variance of 'Score' between Group A and Group B.",
+                    initialCode: "# Isolate scores by group\ngroup_a = clean_df[clean_df['Group'] == 'A']['Score']\ngroup_b = clean_df[clean_df['Group'] == 'B']['Score']\n\n# Perform Levene's test for equal variances\nstat, p_value = stats.____(group_a, ____)\n\nprint(f\"Levene Statistic: {stat:.3f}, P-value: {p_value:.4f}\")",
+                    expected: ["levene", "group_b"],
+                    solution: "# Isolate scores by group\ngroup_a = clean_df[clean_df['Group'] == 'A']['Score']\ngroup_b = clean_df[clean_df['Group'] == 'B']['Score']\n\n# Perform Levene's test for equal variances\nstat, p_value = stats.levene(group_a, group_b)\n\nprint(f\"Levene Statistic: {stat:.3f}, P-value: {p_value:.4f}\")",
+                    hints: [
+                        "The function for Levene's test is 'levene'.",
+                        "Pass both arrays to the function: group_a and group_b."
+                    ],
+                    successMsg: "Variance check complete! A p-value > 0.05 indicates the variances are sufficiently equal (homoscedasticity).",
+                    output: "Levene Statistic: 1.102, P-value: 0.3015"
+                },
+                {
+                    id: "step-4",
+                    instruction: "**Step 4: Final Challenge - Pipeline Integration**\nPut it all together. Complete this script that loads data, drops NaNs, and checks both normality and variance in a single sequence.",
+                    initialCode: "import pandas as pd\nimport scipy.stats as stats\n\n# Load and clean\nfinal_df = pd.read_csv('final_data.csv').____()\n\n# Check normality on a new variable 'Metric'\n_, norm_p = stats.____(final_df['Metric'])\n\n# Check variance between 'Treatment' and 'Control'\ntreatment = final_df[final_df['Condition'] == 'Treatment']['Metric']\ncontrol = final_df[final_df['Condition'] == 'Control']['Metric']\n_, var_p = stats.____(treatment, control)\n\nprint(f\"Normality p-val: {norm_p:.3f} | Variance p-val: {var_p:.3f}\")",
+                    expected: ["dropna", "shapiro", "levene"],
+                    solution: "import pandas as pd\nimport scipy.stats as stats\n\n# Load and clean\nfinal_df = pd.read_csv('final_data.csv').dropna()\n\n# Check normality on a new variable 'Metric'\n_, norm_p = stats.shapiro(final_df['Metric'])\n\n# Check variance between 'Treatment' and 'Control'\ntreatment = final_df[final_df['Condition'] == 'Treatment']['Metric']\ncontrol = final_df[final_df['Condition'] == 'Control']['Metric']\n_, var_p = stats.levene(treatment, control)\n\nprint(f\"Normality p-val: {norm_p:.3f} | Variance p-val: {var_p:.3f}\")",
+                    hints: [
+                        "Start by cleaning missing values with 'dropna()'.",
+                        "Use 'shapiro' for normality and 'levene' for variance."
+                    ],
+                    successMsg: "Module Complete! You have successfully mastered data preparation and foundational assumption checks in Python.",
+                    output: "Normality p-val: 0.412 | Variance p-val: 0.885"
+                }
+            ]
+        };
+
+        // --- STATE MANAGEMENT ---
+        let currentStepIndex = 0;
+        let stepStates = {}; // Will hold attempts, hintsUsed, completed for each step
+
+        // Initialize State
+        moduleData.steps.forEach((step, index) => {
+            stepStates[index] = {
+                attempts: 0,
+                hintsUsed: 0,
+                completed: false
+            };
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Build UI on load
+        document.addEventListener('DOMContentLoaded', () => {
+            buildSidebar();
+            buildNotebookUI();
+            updateProgress();
+        });
+
+        // --- UI BUILDERS ---
+        function buildSidebar() {
+            const container = document.getElementById('module-list-container');
+            const modHtml = `
+                <div class="text-[10px] font-bold text-theme-500/80 uppercase tracking-widest mt-2 mb-2 px-2 pb-1">
+                    Level 1: Fundamentals
+                </div>
+                <div class="p-3 rounded-2xl border transition-all duration-300 bg-theme-500/10 border-theme-500/30 shadow-[0_4px_20px_rgba(245,158,11,0.05)] cursor-pointer">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors bg-theme-500/20 text-theme-400">
+                            <span class="text-sm font-bold">1</span>
+                        </div>
+                        <div>
+                            <div class="text-sm font-semibold tracking-tight text-slate-100">${moduleData.title.split(': ')[1]}</div>
+                            <div class="text-[11px] mt-0.5 font-medium text-theme-400/80">${moduleData.topic}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML = modHtml;
+        }
+
+        function buildNotebookUI() {
+            const container = document.getElementById('notebook-container');
+            let html = '';
+
+            moduleData.steps.forEach((step, index) => {
+                // Formatting markdown-like text
+                const formattedInstruction = step.instruction
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-theme-300 font-semibold">$1</strong>')
+                    .replace(/\n/g, '<br>');
+
+                // Generate line numbers
+                const lineCount = step.initialCode.split('\n').length;
+                let lineNumbersHtml = '';
+                for(let i=1; i<=Math.max(lineCount, 3); i++) {
+                    lineNumbersHtml += `<div>${i}</div>`;
+                }
+
+                html += `
+                <div id="step-container-${index}" class="mb-14 relative group ${index !== 0 ? 'hidden' : 'fade-in'}">
+                    
+                    <!-- Connecting line -->
+                    <div id="step-line-${index}" class="absolute left-8 top-full h-14 w-px bg-slate-800 -z-10 hidden"></div>
+
+                    <!-- Instruction -->
+                    <div class="bg-transparent border-l-[3px] border-slate-700 pl-6 py-2 mb-6 transition-all duration-300" id="step-instruction-${index}">
+                        <div class="text-slate-300 text-[15px] leading-relaxed">
+                            ${formattedInstruction}
+                        </div>
+                    </div>
+
+                    <!-- Code Cell -->
+                    <div id="code-cell-${index}" class="rounded-2xl overflow-hidden border border-slate-800/80 bg-[#1e1e1e] transition-all duration-500">
+                        <!-- Header -->
+                        <div class="bg-[#18181b] px-5 py-3 flex items-center justify-between border-b border-black/40">
+                            <div class="flex items-center gap-4">
+                                <div class="flex gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="code-filename-${index}" class="text-xs font-mono font-medium text-theme-400">script.py</span>
+                                    <span id="code-pulse-${index}" class="inline-block w-2 h-2 rounded-full bg-theme-500 animate-pulse"></span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span id="code-status-${index}" class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">In [*]</span>
+                                <i id="code-success-icon-${index}" data-lucide="check-circle" class="text-theme-500 w-4 h-4 hidden"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Editor -->
+                        <div class="p-5 relative flex font-mono text-[14px] leading-loose">
+                            <div class="w-8 flex-shrink-0 text-slate-600 text-right pr-4 select-none pt-0.5 opacity-50" id="line-numbers-${index}">
+                                ${lineNumbersHtml}
+                            </div>
+                            <textarea
+                                id="code-input-${index}"
+                                class="flex-1 bg-transparent text-[#d4d4d4] resize-none focus:outline-none w-full"
+                                rows="${Math.max(lineCount, 3)}"
+                                spellcheck="false"
+                                wrap="off"
+                                oninput="updateLineNumbers(${index})"
+                            >${step.initialCode}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Action Bar -->
+                    <div id="action-bar-${index}" class="mt-5 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                        <div class="flex gap-3">
+                            <button onclick="handleRun(${index})" class="bg-theme-500 hover:bg-theme-400 text-theme-950 font-bold py-2.5 px-6 rounded-xl transition-all duration-300 flex items-center gap-2 shadow-[0_0_15px_rgba(245,158,11,0.25)] hover:shadow-[0_0_25px_rgba(245,158,11,0.4)] hover:-translate-y-0.5 text-sm">
+                                <i data-lucide="play" class="w-4 h-4 fill-current"></i> Run Code
+                            </button>
+                            
+                            <button id="hint-btn-${index}" onclick="handleHint(${index})" class="bg-slate-800/80 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 px-5 rounded-xl transition-all duration-300 flex items-center gap-2 border border-slate-700 text-sm hover:-translate-y-0.5">
+                                <i data-lucide="lightbulb" class="w-4 h-4"></i> <span id="hint-btn-text-${index}">Get Hint</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Feedback Banner -->
+                        <div id="feedback-banner-${index}" class="hidden flex items-center gap-2.5 text-sm px-5 py-2.5 rounded-xl border font-medium max-w-md">
+                            <i id="feedback-icon-${index}" data-lucide="" class="flex-shrink-0 w-4 h-4"></i>
+                            <span id="feedback-text-${index}"></span>
+                        </div>
+                    </div>
+
+                    <!-- Hints Display Container -->
+                    <div id="hints-container-${index}" class="mt-5 space-y-3 hidden">
+                        <!-- Hints injected here -->
+                    </div>
+
+                    <!-- Output Container -->
+                    <div id="output-container-${index}" class="mt-6 hidden">
+                        <!-- Success message injected here if applicable -->
+                        <div id="success-banner-${index}"></div>
+                        <div class="flex items-start gap-5 mt-4">
+                            <div class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest w-16 text-right pt-3 shrink-0">
+                                Out [${index+1}]
+                            </div>
+                            <div class="flex-1">
+                                <div class="bg-[#0c0c0e] rounded-2xl p-5 font-mono text-[13px] text-slate-300 overflow-x-auto border border-slate-800/80 shadow-inner">
+                                    <pre class="leading-loose">${step.output}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            lucide.createIcons();
+            
+            // Highlight first step
+            document.getElementById('step-instruction-0').classList.replace('border-slate-700', 'border-theme-500');
+            document.getElementById('code-cell-0').classList.add('border-theme-500/40', 'shadow-[0_0_30px_rgba(245,158,11,0.08)]');
+        }
+
+        // --- INTERACTION LOGIC ---
+        
+        function goToHome() {
+            document.getElementById('view-codelab').classList.add('hidden');
+            document.getElementById('view-home').classList.remove('hidden');
+            document.getElementById('nav-btn-home').classList.add('border-theme-500', 'text-theme-400');
+            document.getElementById('nav-btn-home').classList.remove('border-transparent', 'text-slate-400');
+        }
+
+        function launchGame() {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-codelab').classList.remove('hidden');
+            document.getElementById('view-codelab').classList.add('fade-in');
+            
+            // In a real app with tabs, we'd update top nav styling here.
+            // Since we only have 'Home' which becomes inactive visually:
+            document.getElementById('nav-btn-home').classList.remove('border-theme-500', 'text-theme-400');
+            document.getElementById('nav-btn-home').classList.add('border-transparent', 'text-slate-400');
+        }
+
+        function updateLineNumbers(index) {
+            const textarea = document.getElementById(`code-input-${index}`);
+            const lines = textarea.value.split('\n').length;
+            const container = document.getElementById(`line-numbers-${index}`);
+            
+            // Ensure minimum 3 lines height for aesthetics
+            const displayLines = Math.max(lines, 3);
+            
+            let html = '';
+            for(let i=1; i<=displayLines; i++) {
+                html += `<div>${i}</div>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function handleRun(index) {
+            const state = stepStates[index];
+            if(state.completed) return; // Prevent re-running completed steps
+
+            const textarea = document.getElementById(`code-input-${index}`);
+            const inputVal = textarea.value;
+
+            // Check for blanks
+            if (inputVal.includes("____")) {
+                showFeedback(index, 'error', "Please fill in all the blanks (____) before running.");
+                return;
             }
 
-            const postgradTrendCtx = document.getElementById('postgradTrendChart')?.getContext('2d');
-            if (postgradTrendCtx) {
-                new Chart(postgradTrendCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['2015', '2017', '2019', '2021', '2023'],
-                        datasets: [
-                            {
-                                label: 'Master\'s Students (Millions)',
-                                data: [1.7, 1.75, 1.8, 1.82, 1.85],
-                                borderColor: colors.primary,
-                                backgroundColor: 'rgba(0, 91, 190, 0.1)',
-                                fill: true,
-                                tension: 0.3
-                            },
-                            {
-                                label: 'PhD Students (Thousands)',
-                                data: [520, 535, 550, 565, 577],
-                                borderColor: colors.accent,
-                                backgroundColor: 'rgba(77, 161, 255, 0.1)',
-                                fill: true,
-                                tension: 0.3,
-                                yAxisID: 'y1'
-                            }
-                        ]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                type: 'linear',
-                                display: true,
-                                position: 'left',
-                                title: {
-                                    display: true,
-                                    text: 'Master\'s (Millions)'
-                                }
-                            },
-                            y1: {
-                                type: 'linear',
-                                display: true,
-                                position: 'right',
-                                title: {
-                                    display: true,
-                                    text: 'PhD (Thousands)'
-                                },
-                                grid: {
-                                    drawOnChartArea: false,
-                                },
-                            },
-                        },
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
+            state.attempts++;
+
+            // Normalization for comparison
+            const norm = (s) => s.replace(/['"]/g, "'").replace(/\s+/g, '').toLowerCase();
+            const normalizedInput = norm(inputVal);
+            
+            const expectedTokens = moduleData.steps[index].expected;
+            let passed = true;
+            for (let i = 0; i < expectedTokens.length; i++) {
+                if (!normalizedInput.includes(norm(expectedTokens[i]))) {
+                    passed = false;
+                    break;
+                }
+            }
+
+            if (passed) {
+                // Success path
+                markCompleted(index, moduleData.steps[index].successMsg);
+            } else {
+                // Failure path
+                if (state.attempts >= 3) {
+                    // Auto-solve after 3 attempts
+                    showFeedback(index, 'error', "Maximum attempts reached. Auto-filling solution...");
+                    textarea.value = moduleData.steps[index].solution;
+                    updateLineNumbers(index);
+                    
+                    setTimeout(() => {
+                        markCompleted(index, moduleData.steps[index].successMsg);
+                    }, 1000);
+                } else {
+                    showFeedback(index, 'error', `Validation failed. Check your syntax. Attempts remaining: ${3 - state.attempts}`);
+                }
+            }
+        }
+
+        function handleHint(index) {
+            const state = stepStates[index];
+            const stepData = moduleData.steps[index];
+            
+            if (state.completed) return;
+
+            const hintsContainer = document.getElementById(`hints-container-${index}`);
+            const hintBtnText = document.getElementById(`hint-btn-text-${index}`);
+            const hintBtn = document.getElementById(`hint-btn-${index}`);
+
+            // Max 2 hints typically, but dynamic based on array length
+            if (state.hintsUsed < stepData.hints.length) {
+                // Reveal a hint
+                hintsContainer.classList.remove('hidden');
+                const hintText = stepData.hints[state.hintsUsed];
+                
+                const hintEl = document.createElement('div');
+                hintEl.className = 'bg-[#131b22] border border-theme-900/30 text-slate-300 px-5 py-4 rounded-2xl flex items-start gap-3.5 text-sm shadow-sm fade-in mt-2';
+                hintEl.innerHTML = `
+                    <i data-lucide="lightbulb" class="mt-0.5 flex-shrink-0 text-theme-500 w-[18px] h-[18px]"></i>
+                    <div>
+                        <strong class="block text-theme-400 mb-1 font-semibold">Hint ${state.hintsUsed + 1}</strong>
+                        <span class="leading-relaxed">${hintText}</span>
+                    </div>
+                `;
+                hintsContainer.appendChild(hintEl);
+                lucide.createIcons();
+
+                state.hintsUsed++;
+
+                // If all hints used, change button to "Fill Answer"
+                if (state.hintsUsed >= stepData.hints.length) {
+                    hintBtnText.innerText = "Fill Answer";
+                    hintBtn.classList.replace('text-slate-300', 'text-theme-400');
+                    hintBtn.classList.replace('bg-slate-800/80', 'bg-theme-900/40');
+                    hintBtn.classList.replace('hover:bg-slate-700', 'hover:bg-theme-900/60');
+                    hintBtn.classList.replace('border-slate-700', 'border-theme-700/50');
+                    
+                    // Replace icon
+                    const iconEl = hintBtn.querySelector('i');
+                    iconEl.setAttribute('data-lucide', 'check-circle');
+                    lucide.createIcons();
+                }
+            } else {
+                // All hints exhausted, button click means Fill Answer
+                document.getElementById(`code-input-${index}`).value = stepData.solution;
+                updateLineNumbers(index);
+                showFeedback(index, 'success', "Solution filled! Run the code to continue.");
+            }
+        }
+
+        function showFeedback(index, type, msg) {
+            const banner = document.getElementById(`feedback-banner-${index}`);
+            const text = document.getElementById(`feedback-text-${index}`);
+            const icon = document.getElementById(`feedback-icon-${index}`);
+
+            banner.classList.remove('hidden');
+            text.innerText = msg;
+
+            if (type === 'error') {
+                banner.className = 'flex items-center gap-2.5 text-sm px-5 py-2.5 rounded-xl border font-medium max-w-md fade-in bg-rose-950/40 text-rose-400 border-rose-900/50';
+                icon.setAttribute('data-lucide', 'x-circle');
+            } else {
+                banner.className = 'flex items-center gap-2.5 text-sm px-5 py-2.5 rounded-xl border font-medium max-w-md fade-in bg-theme-950/40 text-theme-400 border-theme-900/50';
+                icon.setAttribute('data-lucide', 'check-circle');
+            }
+            lucide.createIcons();
+        }
+
+        function markCompleted(index, successMsg) {
+            const state = stepStates[index];
+            state.completed = true;
+
+            // UI Updates for completed step
+            document.getElementById(`action-bar-${index}`).classList.add('hidden'); // Hide buttons
+            document.getElementById(`code-input-${index}`).disabled = true; // Disable input
+            document.getElementById(`code-input-${index}`).classList.add('opacity-70');
+            
+            // Visual style changes
+            document.getElementById(`code-cell-${index}`).classList.remove('border-theme-500/40', 'shadow-[0_0_30px_rgba(245,158,11,0.08)]');
+            document.getElementById(`code-cell-${index}`).classList.add('border-slate-800/80');
+            document.getElementById(`step-instruction-${index}`).classList.replace('border-theme-500', 'border-slate-700');
+            document.getElementById(`code-filename-${index}`).classList.replace('text-theme-400', 'text-slate-500');
+            document.getElementById(`code-pulse-${index}`).classList.add('hidden');
+            
+            // Update "In [*]" to "In [n]"
+            document.getElementById(`code-status-${index}`).innerText = `In [${index + 1}]`;
+            document.getElementById(`code-success-icon-${index}`).classList.remove('hidden');
+
+            // Show Output and Success Banner
+            const outputContainer = document.getElementById(`output-container-${index}`);
+            outputContainer.classList.remove('hidden');
+            outputContainer.classList.add('fade-in');
+            
+            const successBanner = document.getElementById(`success-banner-${index}`);
+            successBanner.innerHTML = `
+                <div class="mb-5 bg-theme-500/10 border border-theme-500/20 text-theme-400 px-5 py-3 rounded-2xl flex items-center gap-3 text-sm font-medium">
+                    <i data-lucide="check-circle" class="w-[18px] h-[18px] flex-shrink-0"></i>
+                    <span>${successMsg}</span>
+                </div>
+            `;
+            lucide.createIcons();
+
+            // Progress Bar Update
+            updateProgress();
+
+            // Unlock Next Step
+            setTimeout(() => {
+                unlockNextStep(index);
+            }, 1500);
+        }
+
+        function unlockNextStep(currentIndex) {
+            const nextIndex = currentIndex + 1;
+            
+            // Show connecting line from previous step
+            const line = document.getElementById(`step-line-${currentIndex}`);
+            if(line) line.classList.remove('hidden');
+
+            if (nextIndex < moduleData.steps.length) {
+                // Reveal next step
+                const nextContainer = document.getElementById(`step-container-${nextIndex}`);
+                nextContainer.classList.remove('hidden');
+                nextContainer.classList.add('fade-in');
+                
+                // Style next step as active
+                document.getElementById(`step-instruction-${nextIndex}`).classList.replace('border-slate-700', 'border-theme-500');
+                document.getElementById(`code-cell-${nextIndex}`).classList.add('border-theme-500/40', 'shadow-[0_0_30px_rgba(245,158,11,0.08)]');
+                
+                // Scroll down
+                setTimeout(() => {
+                    document.getElementById('scroll-anchor').scrollIntoView({ behavior: 'smooth', block: 'end' });
+                }, 100);
+
+            } else {
+                // Module Complete
+                showModuleComplete();
+            }
+        }
+
+        function updateProgress() {
+            let completedCount = 0;
+            for(let key in stepStates) {
+                if(stepStates[key].completed) completedCount++;
             }
             
-            const residencyCtx = document.getElementById('residencyChart')?.getContext('2d');
-            if (residencyCtx) {
-                new Chart(residencyCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Domestic', 'International'],
-                        datasets: [{
-                            data: [65, 35],
-                            backgroundColor: [colors.primaryLight, colors.accent],
-                            borderColor: '#ffffff',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
-            }
+            const total = moduleData.steps.length;
+            const percent = Math.round((completedCount / total) * 100);
+            
+            document.getElementById('progress-text').innerText = `${percent}%`;
+            document.getElementById('progress-bar').style.width = `${percent}%`;
+        }
 
-            const genderCtx = document.getElementById('genderChart')?.getContext('2d');
-            if (genderCtx) {
-                new Chart(genderCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Male', 'Female', ['Non-binary /', 'Other']],
-                        datasets: [{
-                            data: [52, 47, 1],
-                            backgroundColor: [colors.primary, colors.accent, colors.accentLight],
-                            borderColor: '#ffffff',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
-            }
+        function showModuleComplete() {
+            // Append a completion block at the end of the notebook
+            const container = document.getElementById('notebook-container');
+            const compHtml = `
+                <div class="mt-12 fade-in pb-10 flex flex-col items-center">
+                    <div class="w-20 h-20 bg-theme-500/10 rounded-full flex items-center justify-center mb-6 relative pulse-border">
+                        <i data-lucide="award" class="w-10 h-10 text-theme-400"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-100 mb-2">Module Completed!</h2>
+                    <p class="text-slate-400 mb-8 max-w-md text-center">Excellent work. You have mastered Data Preparation & Assumption Checks.</p>
+                    
+                    <button onclick="goToHome()" class="bg-theme-500 hover:bg-theme-400 text-theme-950 font-bold py-3.5 px-8 rounded-2xl transition-all duration-300 flex items-center gap-2 shadow-[0_0_20px_rgba(245,158,11,0.25)] hover:shadow-[0_0_30px_rgba(245,158,11,0.4)] hover:-translate-y-1">
+                        Return to Home <i data-lucide="home" class="w-4 h-4 ml-1"></i>
+                    </button>
+                </div>
+            `;
+            
+            const div = document.createElement('div');
+            div.innerHTML = compHtml;
+            container.appendChild(div);
+            lucide.createIcons();
 
-            const facultyRankCtx = document.getElementById('facultyRankChart')?.getContext('2d');
-            if (facultyRankCtx) {
-                new Chart(facultyRankCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Full Professor', 'Associate Professor', 'Assistant Professor', ['Instructor /', 'Lecturer']],
-                        datasets: [{
-                            label: 'Number (Thousands)',
-                            data: [150, 125, 135, 120],
-                            backgroundColor: [colors.primaryDark, colors.primary, colors.primaryLight, colors.accent],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        indexAxis: 'y',
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                display: false,
-                            },
-                        }
-                    }
-                });
-            }
+            setTimeout(() => {
+                document.getElementById('scroll-anchor').scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 100);
+        }
 
-            const facultyGenderCtx = document.getElementById('facultyGenderChart')?.getContext('2d');
-            if (facultyGenderCtx) {
-                new Chart(facultyGenderCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Full Professor', 'Associate Professor', 'Assistant Professor'],
-                        datasets: [
-                            {
-                                label: 'Male (Thousands)',
-                                data: [105, 75, 67.5],
-                                backgroundColor: colors.primary,
-                            },
-                            {
-                                label: 'Female (Thousands)',
-                                data: [45, 50, 67.5],
-                                backgroundColor: colors.accent,
-                            }
-                        ]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                stacked: false,
-                            },
-                            y: {
-                                stacked: false,
-                            }
-                        },
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
-            }
-
-            const fieldCtx = document.getElementById('fieldChart')?.getContext('2d');
-            if (fieldCtx) {
-                new Chart(fieldCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['STEM', 'Business', 'Health Sciences', ['Social Sciences &', 'Humanities'], 'Education'],
-                        datasets: [{
-                            label: 'Enrollment %',
-                            data: [35, 20, 18, 17, 10],
-                            backgroundColor: chartColors,
-                            borderColor: '#ffffff',
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
-            }
-
-            const outlookCtx = document.getElementById('outlookChart')?.getContext('2d');
-            if (outlookCtx) {
-                new Chart(outlookCtx, {
-                    type: 'line',
-                    data: {
-                        labels: ['2024', '2026', '2028', '2030'],
-                        datasets: [{
-                            label: 'Projected PhD Enrollment (Thousands)',
-                            data: [580, 595, 610, 625],
-                            borderColor: colors.primary,
-                            backgroundColor: 'rgba(0, 91, 190, 0.2)',
-                            fill: true,
-                            tension: 0.3
-                        }]
-                    },
-                    options: {
-                        ...requiredTooltipConfig,
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            ...requiredTooltipConfig.plugins,
-                            legend: {
-                                position: 'bottom',
-                            },
-                        }
-                    }
-                });
-            }
-        });
     </script>
 </body>
 </html>
